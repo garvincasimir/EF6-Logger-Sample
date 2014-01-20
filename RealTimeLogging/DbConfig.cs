@@ -11,6 +11,7 @@ namespace RealTimeLogging
         public DbConfig()
         {
             this.SetDatabaseInitializer<PersonContext>(new DbInitializer());
+            this.AddInterceptor(new StatementLogger());
         }
     }
 }
