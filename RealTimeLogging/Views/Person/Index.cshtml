@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<button id="btnFirstPersonName">Name of First Person</button> <span id="FirstPersonName"></span><br /><br />
+<button id="btnNumberOfPeople">Number of people</button> <span id="TotalPersons"></span>
+
+@section scripts 
+{
+    <script type="text/javascript">
+        $(function () {
+
+            $('#btnFirstPersonName').click(function () {
+                $.ajax({
+                    url: '@Url.Action("FirstPersonName","Person")',
+                    type: 'POST'
+                }).done(function (data) {
+                    $('#FirstPersonName').text(data);
+                });
+            });
+
+            $('#btnNumberOfPeople').click(function () {
+                $.ajax({
+                    url: '@Url.Action("NumberOfPeople","Person")',
+                    type: 'POST'
+                }).done(function (data) {
+                    $('#TotalPersons').text(data);
+                });
+           });
+
+        });
+    </script>
+
+}
+
